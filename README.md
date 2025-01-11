@@ -1,6 +1,6 @@
 Pre-requisite
 1. Make sure to replace the placeholder in the application.properties with values in your local environment.
-2. Execute the SQL script to load the data into TESTDB.
+2. Execute the SQL script (CreateTable_LoadData.sql) to load the data into TESTDB.
 
 Overview
 
