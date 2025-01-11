@@ -1,9 +1,5 @@
 Pre-requisite
 1. Make sure to replace the placeholder in the application.properties with values in your local environment.
-      a. spring.datasource.username
-      b. spring.datasource.password
-      c. logging.applicationLog.file.location
-      d. logging.reqResLog.file.location
 2. Execute the SQL script to load the data into TESTDB.
 
 Overview
