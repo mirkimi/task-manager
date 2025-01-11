@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <property resource="application.properties" />
+    <!-- Property placeholders for file locations -->
+    <property name="applicationLogFileLocation" value="${logging.application-log.file.location}" />
+    <property name="reqResLogFileLocation" value="${logging.req-res-log.file.location}" />
+
+    <!-- Console Appender -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Rolling File Appender for Application Logs -->
+    <appender name="ApplicationLogs" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${applicationLogFileLocation}/application.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${applicationLogFileLocation}/application-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory> <!-- Keep the last 30 days of logs -->
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Rolling File Appender for Request-Response Logs -->
+    <appender name="ReqResLogs" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${reqResLogFileLocation}/reqres.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${reqResLogFileLocation}/reqres-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory> <!-- Keep the last 30 days of logs -->
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root Logger -->
+    <root level="info">
+        <appender-ref ref="Console" />
+        <appender-ref ref="ApplicationLogs" />
+    </root>
+
+    <!-- Logger for the specific package -->
+    <logger name="com.project.tms" level="debug" additivity="false">
+        <appender-ref ref="Console" />
+        <appender-ref ref="ApplicationLogs" />
+    </logger>
+
+    <!-- Logger for Request-Response Logging -->
+    <logger name="com.project.tms.filter.RequestResponseLoggingFilter" level="debug" additivity="false">
+        <appender-ref ref="ReqResLogs" />
+    </logger>
+
+</configuration>

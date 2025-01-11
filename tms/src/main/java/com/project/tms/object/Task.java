@@ -7,8 +7,9 @@ public class Task {
     private Long id;
     private String title;
     private String description;
-    private Date dueDate;
     private String status;
+    private String startDate;
+    private String endDate;
 
     public Long getId() {
         return id;
@@ -34,19 +35,27 @@ public class Task {
         this.description = description;
     }
 
-    public Date getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
-    }
-
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 }
